@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PCDeals — Promoções de Hardware</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">PC<span class="accent">Deals</span></span>
+      </div>
+      <nav class="nav-links">
+        <a href="#deals">Promoções</a>
+        <a href="#how">Como funciona</a>
+        <a href="admin/index.html" class="btn-admin">Admin</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#deals">Promoções</a>
+      <a href="#how">Como funciona</a>
+      <a href="admin/index.html">Admin</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">🔥 Atualizado diariamente</p>
+      <h1>As melhores <br/><span class="gradient-text">promoções de PC</span><br/>do Brasil</h1>
+      <p class="hero-sub">Peças, periféricos, notebooks e mais — tudo em um lugar só.</p>
+      <a href="#deals" class="btn-cta">Ver promoções agora</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span id="statDeals">0</span><small>Promoções ativas</small></div>
+      <div class="stat"><span id="statStores">0</span><small>Lojas monitoradas</small></div>
+      <div class="stat"><span id="statSaved">R$0</span><small>Economia média</small></div>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="filters-section" id="deals">
+    <div class="container">
+      <div class="filters-bar">
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Buscar produto..." />
+        </div>
+
+        <div class="filter-group">
+          <label>Loja</label>
+          <div class="filter-pills" id="filterStores">
+            <button class="pill active" data-store="all">Todas</button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Categoria</label>
+          <div class="filter-pills" id="filterCategories">
+            <button class="pill active" data-category="all">Todas</button>
+            <button class="pill" data-category="gpu">GPU</button>
+            <button class="pill" data-category="cpu">CPU</button>
+            <button class="pill" data-category="ram">RAM</button>
+            <button class="pill" data-category="storage">Armazenamento</button>
+            <button class="pill" data-category="monitor">Monitor</button>
+            <button class="pill" data-category="keyboard">Teclado</button>
+            <button class="pill" data-category="mouse">Mouse</button>
+            <button class="pill" data-category="headset">Headset</button>
+            <button class="pill" data-category="psu">Fonte</button>
+            <button class="pill" data-category="case">Gabinete</button>
+            <button class="pill" data-category="cooling">Cooler</button>
+            <button class="pill" data-category="notebook">Notebook</button>
+            <button class="pill" data-category="other">Outros</button>
+          </div>
+        </div>
+
+        <div class="filter-group filter-right">
+          <label>Ordenar</label>
+          <select id="sortSelect">
+            <option value="newest">Mais recentes</option>
+            <option value="discount">Maior desconto</option>
+            <option value="price_asc">Menor preço</option>
+            <option value="price_desc">Maior preço</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DEALS GRID -->
+  <section class="deals-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Promoções ativas</h2>
+        <span id="dealsCount" class="count-badge">0 resultados</span>
+      </div>
+      <div class="deals-grid" id="dealsGrid">
+        <!-- Cards injetados via JS -->
+      </div>
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <span>😢</span>
+        <p>Nenhuma promoção encontrada com esses filtros.</p>
+        <button onclick="resetFilters()">Limpar filtros</button>
+      </div>
+      <div class="loading-state" id="loadingState">
+        <div class="spinner"></div>
+        <p>Carregando promoções...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section" id="how">
+    <div class="container">
+      <h2 class="section-title">Como funciona</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Monitoramos as lojas</h3>
+          <p>Nossa equipe acompanha promoções diariamente nas principais lojas de hardware do Brasil.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Publicamos aqui</h3>
+          <p>Cada promoção é publicada com preço original, preço com desconto e link direto para a loja.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Você economiza</h3>
+          <p>Clique no card, vá direto para a loja e aproveite o desconto antes que acabe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <span class="logo-text">PC<span class="accent">Deals</span></span>
+      <p>Feito com ⚡ para os entusiastas de hardware do Brasil</p>
+      <p class="small">Os preços podem variar. Acesse a loja para confirmar antes de comprar.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

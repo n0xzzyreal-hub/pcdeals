@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — PCDeals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="loginScreen" class="admin-screen">
+    <div class="admin-card">
+      <div class="logo" style="justify-content:center;margin-bottom:24px">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">PC<span class="accent">Deals</span> Admin</span>
+      </div>
+      <h2>Entrar</h2>
+      <div id="loginError" class="form-error" style="display:none"></div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" id="loginEmail" placeholder="admin@exemplo.com" />
+      </div>
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" />
+      </div>
+      <button id="btnLogin" class="btn-primary">Entrar</button>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="adminPanel" class="admin-screen" style="display:none">
+    <header>
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">PC<span class="accent">Deals</span> <span style="opacity:.4">/ Admin</span></span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <a href="../index.html" class="btn-admin">← Ver site</a>
+          <button id="btnLogout" class="btn-admin">Sair</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="admin-body container">
+
+      <!-- FORM -->
+      <section class="admin-card form-card">
+        <h2 id="formTitle">➕ Adicionar promoção</h2>
+        <div id="formMsg" class="form-msg" style="display:none"></div>
+
+        <div class="form-grid">
+          <div class="form-group span2">
+            <label>Título do produto *</label>
+            <input type="text" id="fTitle" placeholder="Ex: RTX 4060 Ti 8GB ASUS Dual" />
+          </div>
+          <div class="form-group">
+            <label>Loja *</label>
+            <input type="text" id="fStore" placeholder="Ex: KaBuM!, Pichau, Terabyte..." />
+            <datalist id="storesList"></datalist>
+          </div>
+          <div class="form-group">
+            <label>Categoria *</label>
+            <select id="fCategory">
+              <option value="">Selecione</option>
+              <option value="gpu">GPU</option>
+              <option value="cpu">CPU</option>
+              <option value="ram">RAM</option>
+              <option value="storage">Armazenamento (SSD/HDD)</option>
+              <option value="monitor">Monitor</option>
+              <option value="keyboard">Teclado</option>
+              <option value="mouse">Mouse</option>
+              <option value="headset">Headset</option>
+              <option value="psu">Fonte</option>
+              <option value="case">Gabinete</option>
+              <option value="cooling">Cooler</option>
+              <option value="notebook">Notebook</option>
+              <option value="other">Outros</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preço original (R$)</label>
+            <input type="number" id="fPriceOld" placeholder="1299.99" step="0.01" min="0" />
+          </div>
+          <div class="form-group">
+            <label>Preço promocional (R$) *</label>
+            <input type="number" id="fPriceNew" placeholder="999.99" step="0.01" min="0" />
+          </div>
+          <div class="form-group span2">
+            <label>Parcelamento</label>
+            <input type="text" id="fInstallment" placeholder="Ex: 10x R$ 99,99 sem juros" />
+          </div>
+          <div class="form-group span2">
+            <label>URL da promoção *</label>
+            <input type="url" id="fUrl" placeholder="https://kabum.com.br/produto/..." />
+          </div>
+          <div class="form-group span2">
+            <label>URL da imagem</label>
+            <input type="url" id="fImageUrl" placeholder="https://..." />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="btnCancelEdit" class="btn-secondary" style="display:none">Cancelar edição</button>
+          <button id="btnSave" class="btn-primary">Salvar promoção</button>
+        </div>
+      </section>
+
+      <!-- TABLE -->
+      <section class="admin-card">
+        <div class="table-header">
+          <h2>📋 Promoções cadastradas</h2>
+          <input type="text" id="adminSearch" placeholder="Buscar..." class="admin-search" />
+        </div>
+        <div class="table-wrap">
+          <table id="dealsTable">
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Loja</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Desconto</th>
+                <th>Data</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="dealsTableBody">
+              <tr><td colspan="7" style="text-align:center;color:var(--muted)">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
